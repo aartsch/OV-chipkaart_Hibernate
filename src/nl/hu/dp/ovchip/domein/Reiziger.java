@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
+@Entity
 public class Reiziger {
     @Id
     @Column(name = "reiziger_id")

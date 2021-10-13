@@ -2,6 +2,7 @@ package nl.hu.dp.ovchip.domein;
 
 import javax.persistence.*;
 
+@Entity
 public class Adres {
     @Id
     @Column(name = "adres_id")

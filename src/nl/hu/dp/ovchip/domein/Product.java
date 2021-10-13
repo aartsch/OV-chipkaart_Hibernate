@@ -1,11 +1,9 @@
 package nl.hu.dp.ovchip.domein;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Product {
     @Id
     @Column(name = "product_nummer")
