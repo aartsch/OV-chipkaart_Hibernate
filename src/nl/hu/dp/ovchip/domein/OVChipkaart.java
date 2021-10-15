@@ -13,10 +13,10 @@ public class OVChipkaart {
     private Date geldigTot;
     private int klasse;
     private double saldo;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reiziger_id")
     private Reiziger reiziger;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "ov_chipkaart_product",
             joinColumns = { @JoinColumn (name = "kaart_nummer") },

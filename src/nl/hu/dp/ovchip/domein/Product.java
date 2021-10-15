@@ -11,6 +11,6 @@ public class Product {
     private String naam;
     private String beschrijving;
     private int prijs;
-    @ManyToMany(mappedBy = "product")
+    @ManyToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<OVChipkaart> ovChipkaarten;
 }

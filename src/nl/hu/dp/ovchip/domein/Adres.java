@@ -11,7 +11,7 @@ public class Adres {
     private int huisnummer;
     private String  straat;
     private String woonplaats;
-    @OneToOne
+    @OneToOne( cascade = CascadeType.ALL)
     @JoinColumn( name = "reiziger_id")
     private Reiziger reiziger;
 }
