@@ -4,6 +4,7 @@ import nl.hu.dp.ovchip.domein.OVChipkaart;
 import nl.hu.dp.ovchip.domein.Reiziger;
 import org.hibernate.Session;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class OVChipkaartDAOHibernate extends BaseDAOHibernate implements OVChipkaartDAO{
@@ -12,26 +13,24 @@ public class OVChipkaartDAOHibernate extends BaseDAOHibernate implements OVChipk
     }
 
     @Override
-    public boolean save(OVChipkaart ovChipkaart) {
+    public void save(OVChipkaart ovChipkaart) {
         sess.save(ovChipkaart);
-        return true;
     }
 
     @Override
-    public boolean update(OVChipkaart ovChipkaart) {
+    public void update(OVChipkaart ovChipkaart) {
         sess.update(ovChipkaart);
-        return true;
     }
 
     @Override
-    public boolean delete(OVChipkaart ovChipkaart) {
+    public void delete(OVChipkaart ovChipkaart) {
         sess.delete(ovChipkaart);
-        return true;
     }
 
     @Override
     public List<OVChipkaart> findByReiziger(Reiziger reiziger) {
-        return null;
+        List<OVChipkaart> ovChipkaarten = (List<OVChipkaart>) sess.get(Reiziger.class, (Serializable) reiziger);
+        return ovChipkaarten;
     }
 
     @Override

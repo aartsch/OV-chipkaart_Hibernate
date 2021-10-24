@@ -13,29 +13,29 @@ public class ReizigerDAOHibernate extends BaseDAOHibernate implements ReizigerDA
     }
 
     @Override
-    public boolean save(Reiziger reiziger) {
+    public void save(Reiziger reiziger) {
         sess.save(reiziger);
     }
 
     @Override
-    public boolean update(Reiziger reiziger) {
+    public void update(Reiziger reiziger) {
         sess.update(reiziger);
     }
 
     @Override
-    public boolean delete(Reiziger reiziger) {
+    public void delete(Reiziger reiziger) {
         sess.delete(reiziger);
-        return true;
     }
 
     @Override
     public Reiziger findById(int id) {
-        return null;
+        Reiziger reiziger = sess.get(Reiziger.class, id);
+        return reiziger;
     }
 
     @Override
     public List<Reiziger> findByGbdatum(Date datum) {
-        Reiziger reizigers = (Reiziger) sess.get(Reiziger.class, date);
+        Reiziger reizigers = (Reiziger) sess.get(Reiziger.class, datum);
         return (List<Reiziger>) reizigers;
     }
 

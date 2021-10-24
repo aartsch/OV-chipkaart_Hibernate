@@ -1,9 +1,11 @@
 package nl.hu.dp.ovchip.dao;
 
 import nl.hu.dp.ovchip.domein.Adres;
+import nl.hu.dp.ovchip.domein.OVChipkaart;
 import nl.hu.dp.ovchip.domein.Reiziger;
 import org.hibernate.Session;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class AdresDAOHibernate extends BaseDAOHibernate implements AdresDAO {
@@ -12,27 +14,24 @@ public class AdresDAOHibernate extends BaseDAOHibernate implements AdresDAO {
     }
 
     @Override
-    public boolean save(Adres adres) {
+    public void save(Adres adres) {
         sess.save(adres);
-        return true;
     }
 
     @Override
-    public boolean update(Adres adres) {
+    public void update(Adres adres) {
         sess.update(adres);
-        return true;
     }
 
     @Override
-    public boolean delete(Adres adres) {
+    public void delete(Adres adres) {
         sess.delete(adres);
-        return true;
     }
 
     @Override
     public Adres findByReiziger(Reiziger reiziger) {
-        Adres adres = (Adres) sess.get(reiziger.class, id);
-        return adres;
+        List<Adres> adres = (List<Adres>) sess.get(Reiziger.class, (Serializable) reiziger);
+        return (Adres) adres;
     }
 
     @Override
