@@ -6,11 +6,11 @@ import nl.hu.dp.ovchip.domein.Product;
 import java.util.List;
 
 public interface ProductDAO {
-    public void save(Product product);
+    public boolean save(Product product);
 
-    public void update(Product product);
+    public boolean update(Product product);
 
-    public void delete(Product product);
+    public boolean delete(Product product);
 
     public List<Product> findByOvchipkaart(OVChipkaart ovChipkaart);
 

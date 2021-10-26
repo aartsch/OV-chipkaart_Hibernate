@@ -14,18 +14,34 @@ public class AdresDAOHibernate extends BaseDAOHibernate implements AdresDAO {
     }
 
     @Override
-    public void save(Adres adres) {
+    public boolean save(Adres adres) {
         sess.save(adres);
+        if(sess.get(Adres.class, adres.getId()) == null) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     @Override
-    public void update(Adres adres) {
+    public boolean update(Adres adres) {
         sess.update(adres);
+        if(sess.get(Adres.class,adres.getId()) != adres) {
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public void delete(Adres adres) {
+    public boolean delete(Adres adres) {
         sess.delete(adres);
+        if(sess.get(Adres.class, adres.getId()) == null) {
+            return true;
+        }
+        else {
+            return true;
+        }
     }
 
     @Override

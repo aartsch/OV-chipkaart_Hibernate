@@ -14,18 +14,34 @@ public class ProductDAOHibernate extends BaseDAOHibernate implements ProductDAO 
     }
 
     @Override
-    public void save(Product product) {
+    public boolean save(Product product) {
         sess.save(product);
+        if(sess.get(Product.class, product.getProductNummer()) == null) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     @Override
-    public void update(Product product) {
+    public boolean update(Product product) {
         sess.update(product);
+        if(sess.get(Product.class, product.getProductNummer()) != product) {
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public void delete(Product product) {
+    public boolean delete(Product product) {
         sess.delete(product);
+        if(sess.get(Product.class, product.getProductNummer()) == null) {
+            return true;
+        }
+        else {
+            return true;
+        }
     }
 
     @Override

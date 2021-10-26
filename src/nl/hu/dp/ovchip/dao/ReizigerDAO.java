@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface ReizigerDAO {
 
-    public void save(Reiziger reiziger);
-    public void update(Reiziger reiziger);
-    public void delete(Reiziger reiziger);
+    public boolean save(Reiziger reiziger);
+    public boolean update(Reiziger reiziger);
+    public boolean delete(Reiziger reiziger);
     public Reiziger findById(int id);
     public List<Reiziger> findByGbdatum(Date datum);
     public List<Reiziger> findAll();

@@ -13,18 +13,34 @@ public class ReizigerDAOHibernate extends BaseDAOHibernate implements ReizigerDA
     }
 
     @Override
-    public void save(Reiziger reiziger) {
+    public boolean save(Reiziger reiziger) {
         sess.save(reiziger);
+        if(sess.get(Reiziger.class, reiziger.getId()) == null) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     @Override
-    public void update(Reiziger reiziger) {
+    public boolean update(Reiziger reiziger) {
         sess.update(reiziger);
+        if(sess.get(Reiziger.class, reiziger.getId()) != reiziger) {
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public void delete(Reiziger reiziger) {
+    public boolean delete(Reiziger reiziger) {
         sess.delete(reiziger);
+        if(sess.get(Reiziger.class, reiziger.getId()) == null) {
+            return true;
+        }
+        else {
+            return true;
+        }
     }
 
     @Override
